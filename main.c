@@ -1,0 +1,74 @@
+#include<stdio.h>
+void depth(int array[11][11],int i,int j,int w){
+    if(w==0){
+    if(array[i+1][j]==1){
+        printf("(%d,%d)",i+1,j);
+        depth(array,i+1,j,1);
+    }
+    /*if(array[i-1][j]==1){
+        printf("(%d,%d)",i-1,j);
+        depth(array,i-1,j,2);
+    }*/
+    if(array[i][j+1]==1){
+        printf("(%d,%d)",i,j+1);
+        depth(array,i,j+1,3);
+    }
+    /*if(array[i][j-1]==1){
+        printf("(%d,%d)",i,j-1);
+        depth(array,i,j-1,4);
+    }*/
+    }
+    if(w==1){
+    if(array[i+1][j]==1){
+        printf("(%d,%d)",i+1,j);
+        depth(array,i+1,j,1);
+    }
+    }
+    if(w==2){
+        if(array[i-1][j]==1){
+        printf("(%d,%d)",i-1,j);
+        depth(array,i-1,j,2);
+    }
+    }
+    if(w==3){
+        if(array[i][j+1]==1){
+        printf("(%d,%d)",i,j+1);
+        depth(array,i,j+1,3);
+    }
+    }
+    if(w==4){
+        if(array[i][j-1]==1){
+        printf("(%d,%d)",i,j-1);
+        depth(array,i,j-1,4);
+    }
+    }
+}
+void main(){
+    int array[11][11]={{0,0,0,0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0,0,0,0},
+                        {0,0,0,0,1,0,0,0,0,0},
+                        {0,0,2,0,1,0,0,0,0,0},
+                        {0,0,2,1,1,1,1,0,0,0},
+                        {0,0,2,1,0,0,0,0,0,0},
+                        {0,0,2,1,0,0,0,0,0,0},
+                        {0,0,2,0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0,0,0,0},
+                        {0,0,0,0,0,0,0,0,0,0}};
+    int i,j;
+        for(i=0;i<11;i++){
+        for(j=0;j<11;j++){
+        printf("%d ",array[i][j]);
+    }
+    printf("\n");
+    }
+    for(i=0;i<11;i++){
+        for(j=0;j<11;j++){
+        if(array[i][j]==2){
+            printf("Head(%d,%d): ",i,j);
+            depth(array,i,j,0);
+            printf("//");
+            getch();
+        }
+    }
+    }
+}
